@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Statuses";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Statuses</title>
+
+    <style>
+        table, td {
+            border: 1px solid black;
+            text-align: left;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(17, 34, 17, 0.68);
+        }
+
+        tr:hover {
+            background-color: #066df8;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>Statuses</h3>
+        @Html.ActionLink("Create New", "Create")
+        <table>
+            <tr>
+                <td><p>Id</p></td>
+                <td><p>Name</p></td>
+                <td></td>
+            </tr>
+            @foreach (var status in ViewBag.Statuses)
+            {
+                <tr>
+                    <td><p>@status.Id</p></td>
+                    <td><p>@status.Name</p></td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = status.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = status.Id })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", "Home")
+    </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+﻿@model Storage5.Models.Customer
+
+@{
+    ViewBag.Title = "Customers";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Customers</title>
+
+    <style>
+        table, td {
+            border: 1px solid black;
+            text-align: left;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(17, 34, 17, 0.68);
+        }
+
+        tr:hover {
+            background-color: #066df8;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Customers</h1>
+    <div>
+
+        @Html.ActionLink("Create New", "Create")
+        <table>
+            <tr>
+                <td><p>Id</p></td>
+                <td><p>Fname</p></td>
+                <td><p>Lname</p></td>
+                <td><p>Address</p></td>
+                <td><p>Phone</p></td>
+                <td></td>
+            </tr>
+            @foreach (var customer in ViewBag.Customers)
+            {
+                <tr>
+                    <td><p>@customer.Id</p></td>
+                    <td><p>@customer.Fname</p></td>
+                    <td><p>@customer.Lname</p></td>
+                    <td><p>@customer.Address</p></td>
+                    <td><p>@customer.Phone</p></td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = customer.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = customer.Id })
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", "Home")
+    </div>
+</body>
+
+
+</html>
+
+
+
+

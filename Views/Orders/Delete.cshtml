@@ -1,0 +1,48 @@
+﻿@model Storage5.Models.Order
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = null;
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate) <!-- Storage5.Models.Customer -->
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstimatedDate) <!-- shows the name of the property / name used in the display attribute of the property -->
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedDate) <!-- displaying model items / database items in the browser -->
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusId)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

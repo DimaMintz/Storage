@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Products";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Products</title>
+
+    <style>
+        table, td {
+            border: 1px solid black;
+            text-align: left;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(17, 34, 17, 0.68);
+        }
+
+        tr:hover {
+            background-color: #066df8;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>products</h3>
+        @Html.ActionLink("Create New", "Create")
+        <table>
+            <tr>
+                <td><p>Id</p></td>
+                <td><p>Name</p></td>
+                <td><p>Price</p></td>
+                <td><p>Description</p></td>
+                <td><p>CreationDate</p></td>
+                <td><p>ExpiredDate</p></td>
+                <td></td>
+            </tr>
+            @foreach (var p in ViewBag.Products)
+            {
+                <tr>
+                    <td><p>@p.Id</p></td>
+                    <td><p>@p.Name</p></td>
+                    <td><p>@p.Price</p></td>
+                    <td><p>@p.Description</p></td>
+                    <td><p>@p.CreationDate</p></td>
+                    <td><p>@p.ExpiredDate</p></td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = p.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = p.Id })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", "Home")
+    </div>
+</body>
+</html>

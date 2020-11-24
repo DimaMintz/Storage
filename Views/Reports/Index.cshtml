@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Report";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Report</title>
+
+    <style>
+        table, td {
+            border: 1px solid black;
+            text-align: left;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(17, 34, 17, 0.68);
+        }
+
+        tr:hover {
+            background-color: #066df8;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>Report</h3>
+
+        <form id="formSearch" method="post">
+            <div class="row" id="searchBox">
+                <div class="col-md-1">OrderId</div>
+                <div class="col-md-2"><input type="number" value=0 id="OrderId" name="OrderId" /></div>
+            </div>
+
+            <div class="row" id="searchBox1">
+                <div class="col-md-1">CustomerId</div>
+                <div class="col-md-2"><input type="number" value=0 id="CustomerId" name="CustomerId" /></div>
+            </div>
+
+            <div class="row" id="searchBox2">
+                <div class="col-md-1">ProductId</div>
+                <div class="col-md-2"><input type="number" value=0 id="ProductId" name="ProductId" /></div>
+                <div class="col-md-1"><input type="submit" id="submitsearch" value="Search" /></div>
+            </div>
+        </form>
+
+        <table>
+            <tr>
+                <td>Products:</td>
+                <td><p>Id</p></td>
+                <td><p>CreationDate</p></td>
+                <td><p>EstimatedDate</p></td>
+                <td><p>StatusId</p></td>
+                <td><p>CustomerId</p></td>
+                <td><p>Customer info</p></td>
+                <td></td>
+            </tr>
+            @foreach (var order in ViewBag.OrderProducts)
+            {
+                <tr>
+                    <td></td>
+                    <td><p>@order.OrderId</p></td>
+                    <td><p>@order.OrderCreationDate</p></td>
+                    <td><p>@order.OrderEstimatedDate</p></td>
+                    <td><p>@order.OrderStatusId</p></td>
+                    <td><p>@order.OrderCustomerId</p></td>
+                    <td><p>Name @order.CustomerFname @order.CustomerLname <br /> Address @order.CustomerAddress<br />Phone @order.CustomerPhone</p></td>
+                </tr>
+                foreach (var product in order.products)
+                {
+                    <tr>
+                        <td>
+                            Name: @product.Name <br />
+                            Price: @product.Price <br />
+                            Description: @product.Description <br />
+                            CreationDate: @product.CreationDate <br />
+                            ExpiredDate: @product.ExpiredDate <br />
+
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", "Home")
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <style type="text/css">
+        a.my-class {
+            color: #2241cd;
+            font-size: 30px;   
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        <h3>Storage</h3>
+        @Html.ActionLink("Products", "Index", "Products", null, new { @class = "my-class" })<br>
+        @Html.ActionLink("Orders", "Index", "Orders", null, new { @class = "my-class" })<br>
+        @Html.ActionLink("Customers", "Index", "Customers", null, new { @class = "my-class" })<br>
+        @Html.ActionLink("Statuses", "Index", "Statuses", null, new { @class = "my-class" })<br>
+        @Html.ActionLink("Reports", "Index", "Reports", null, new { @class = "my-class" })
+
+    </div>
+</body>
+</html>
